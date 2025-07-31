@@ -1,0 +1,29 @@
+# Import the necessary libraries
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+img = Image.open("/kaggle/input/numpy-logo/numpy logo(github).png")
+print(type(img))
+print(img)
+
+# summarize some details about the image
+print(img.format)
+print(img.size)
+print(img.mode)
+<class 'PIL.PngImagePlugin.PngImageFile'>
+<PIL.PngImagePlugin.PngImageFile image mode=RGBA size=1001x1001 at 0x7F6A682478B0>
+PNG
+(1001, 1001)
+RGBA
+img_np_array = np.array(img)
+print(type(img_np_array))
+print(img_np_array.shape)
+<class 'numpy.ndarray'>
+(1001, 1001, 4)
+# change from RGBA to RGB
+rgb_array = np.delete(arr=img_np_array, obj=3, axis=2)
+print(rgb_array.shape)
+(1001, 1001, 3)
+# check does image change ?
+plt.imshow(rgb_array)
+plt.show()
